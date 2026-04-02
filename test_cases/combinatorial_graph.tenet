@@ -1,0 +1,21 @@
+// Raw Tenet Symbolic Engine Test (Combinatorial Constraint)
+// A raw mathematical constraint optimization scenario.
+
+// Constraint logic for checking graph edge bounds.
+var edge_weight : int;
+var node_capacity : int;
+
+// System boundaries (Axioms)
+assert (edge_weight >= 0);  // Physical distances cannot be negative
+assert (node_capacity <= 100); // Node max load
+
+// Execution condition: Testing an LLM hallucination
+// The AI attempts to violate the bounds of physics
+attempt {
+    edge_weight = -10;
+    node_capacity = 150;
+}
+
+// Tenet evaluation
+// This will immediately trap and output a Fatal Contradiction Error.
+check_satisfiability();

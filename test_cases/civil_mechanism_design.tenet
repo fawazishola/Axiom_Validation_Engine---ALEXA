@@ -1,0 +1,109 @@
+// ═══════════════════════════════════════════════════════════════
+// MECHANISM DESIGN: THE PRICE OF CIVIL SOCIETY
+// ═══════════════════════════════════════════════════════════════
+//
+// Central Question:
+//   Can imposing a small cost on self-interested behavior
+//   improve collective welfare — and will rational agents accept it?
+//
+// Phase 1: No mechanism. Dominant strategy = Exploit. Collective ruin.
+// Phase 2: Pigovian tax on Exploit. Dominant strategy flips to Conserve.
+//
+// The mechanism does not forbid exploitation. It prices it.
+// Rational agents, facing new incentives, converge on cooperation.
+// Every agent ends up better off in equilibrium than before.
+// ═══════════════════════════════════════════════════════════════
+
+// ───────────────────────────────────────────────────────────────
+// PHASE 1: UNREGULATED COMMONS
+// No mechanism. Exploit strictly dominates.
+// Nash = (Exploit, Exploit) = (2, 2). Social welfare = 4.
+// ───────────────────────────────────────────────────────────────
+
+game UncheckedCommons {
+    players FarmerA, FarmerB
+    strategies Exploit, Conserve
+
+    payoff FarmerA {
+        (Exploit, Exploit):   2
+        (Exploit, Conserve):  9
+        (Conserve, Exploit):  0
+        (Conserve, Conserve): 6
+    }
+
+    payoff FarmerB {
+        (Exploit, Exploit):   2
+        (Conserve, Exploit):  9
+        (Exploit, Conserve):  0
+        (Conserve, Conserve): 6
+    }
+}
+
+print "=== Phase 1: Unregulated Commons ===";
+print "Exploit strictly dominates. Individually rational. Collectively catastrophic.";
+print "";
+
+solve UncheckedCommons;
+
+print "";
+print "Social welfare at Nash:         4  (2 + 2)";
+print "Social optimum (both Conserve): 12 (6 + 6)";
+print "Welfare gap:                    8";
+
+// ───────────────────────────────────────────────────────────────
+// MECHANISM DESIGN: What tax τ on Exploit flips the equilibrium?
+//
+//   For Conserve to dominate, require for each player:
+//     vs Exploit:  0 > 2 - τ  →  τ > 2
+//     vs Conserve: 6 > 9 - τ  →  τ > 3
+//
+//   Minimum civil tax: τ > 3.
+//   We set τ = 5 — makes the dominance strict and robust.
+//
+//   Individual rationality check:
+//     New Nash payoff (6) > Old Nash payoff (2) ✓
+//     No rational agent would veto the mechanism ex ante.
+// ───────────────────────────────────────────────────────────────
+
+// ───────────────────────────────────────────────────────────────
+// PHASE 2: PIGOVIAN MECHANISM (τ = 5 on Exploit)
+// Exploit payoffs reduced by 5. Conserve payoffs unchanged.
+// Conserve strictly dominates.
+// Nash = (Conserve, Conserve) = (6, 6). Social welfare = 12.
+// ───────────────────────────────────────────────────────────────
+
+game CivilCommons {
+    players FarmerA, FarmerB
+    strategies Exploit, Conserve
+
+    payoff FarmerA {
+        (Exploit, Exploit):   -3
+        (Exploit, Conserve):   4
+        (Conserve, Exploit):   0
+        (Conserve, Conserve):  6
+    }
+
+    payoff FarmerB {
+        (Exploit, Exploit):   -3
+        (Conserve, Exploit):   4
+        (Exploit, Conserve):   0
+        (Conserve, Conserve):  6
+    }
+}
+
+print "";
+print "=== Phase 2: Civil Mechanism (τ = 5 on Exploit) ===";
+print "Exploitation is now individually irrational.";
+print "Conserve is the dominant strategy.";
+print "";
+
+solve CivilCommons;
+
+print "";
+print "Social welfare at new Nash:     12 (6 + 6)";
+print "Individual welfare gain:        +4 per player";
+print "Individual rationality holds:   new Nash (6) > old Nash (2)";
+print "";
+print "The mechanism made exploitation costly — not forbidden.";
+print "Rational agents chose cooperation without coercion.";
+print "Society improved. No one is worse off in equilibrium.";

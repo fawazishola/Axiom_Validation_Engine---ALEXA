@@ -1,0 +1,19 @@
+// Raw Tenet Symbolic Engine Test (Boolean Satisfiability)
+// Direct access to the constraint solver, bypassing the Flux DSL.
+
+// Formulating a raw logic proposition (CNF - Conjunctive Normal Form)
+// We declare variables and demand Tenet finds a state that satisfies them.
+var P : bool;
+var Q : bool;
+var R : bool;
+
+// Constraints
+assert (P OR Q);
+assert (NOT P OR R);
+assert (NOT Q OR R);
+
+// Execution:
+// Tenet uses symbolic execution to search for a valid truth assignment.
+// If R is False, the constraints become impossible to satisfy.
+// Tenet will solve this and output: VALID (P=True, Q=False, R=True) or similar valid states.
+check_satisfiability();
