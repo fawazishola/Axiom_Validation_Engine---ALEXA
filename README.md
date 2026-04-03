@@ -2,7 +2,7 @@
 
 ## Start Here
 
-If you have 10 minutes: extract both archives, run the 9 commands in the Evaluation Protocol below, and check each output against its expected result. The outputs are deterministic — there is no variance. Either they match or they don't.
+If you have 10 minutes: extract both archives, run the 9 commands in the Evaluation Protocol below, and check each output against its expected result. The outputs are deterministic  there is no variance. Either they match or they don't.
 
 If you want to understand what you're running before executing: open any `.flux` or `.tenet` file in a text editor. Every file is commented in plain English at the top explaining exactly what it models, what the correct result is, and why. The two BNF grammar files (`FLUX_BNF_GRAMMAR.md`, `TENET_BNF_GRAMMAR.md`) define the full language specifications if you want to evaluate the languages formally. The research papers in `research_papers/` provide the theoretical foundations.
 
