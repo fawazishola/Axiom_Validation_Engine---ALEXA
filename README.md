@@ -168,21 +168,6 @@ A successful execution of this test suite confirms the following:
 If all nine test categories produce their expected outputs, the Axiom
 neurosymbolic architecture is functioning as described in the accompanying
 research papers.
-## Research Lineage
 
-This repository is the executable systems extension of the research thesis introduced in:
-
-**Imitation Is Not Intelligence: The Mathematical Case for Neurosymbolic Architecture**
-
-That paper formalizes the impossibility of purely imitation-based systems reliably solving structurally disjoint reasoning spaces and proposes the **Think Test**, a benchmark requiring deterministic verification traces.
-
-The present repository operationalizes that thesis.
-
-Where the paper establishes the theoretical necessity of deterministic verification, this validation engine demonstrates the concrete implementation of that principle through two real languages:
-
-- **Flux** → mathematical reasoning and invariant enforcement
-- **Tenet** → symbolic game-theoretic and mechanism design verification
-
-Together, the binaries, test suite, and expected deterministic outputs serve as the engineering realization of the paper’s central claim:
 
 > intelligence must be **provable, verifiable, and structurally constrained**, not merely statistically imitated.
